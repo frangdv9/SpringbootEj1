@@ -89,6 +89,9 @@ public class UsersController {
         if (password.length() < 8 || password.length() > 16){
             return "La contraseña debe contener entre 8 y 16 caracteres";
         }
+        if (parsedAge < 18 ){
+            return "El usuario debe tener como minimo 18 años de edad";
+        }
         if (!users.isEmpty()){
             if (users.stream().filter(user -> user.getEmail().equalsIgnoreCase(email)).findFirst().isPresent()){
                 return "Ya existe un usuario registrado con este mail";
